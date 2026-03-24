@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileStore</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FileStore</h1>
+      <p class="subtitle">Your files, synced everywhere</p>
+    </header>
+
+    <!-- Auth Section -->
+    <section id="auth-section" class="section">
+      <div id="auth-container">
+        <!-- Sign In Form -->
+        <div id="sign-in-form" class="auth-form">
+          <h2>Sign In</h2>
+          <input type="email" id="sign-in-email" placeholder="Email" required>
+          <input type="password" id="sign-in-password" placeholder="Password" required>
+          <button id="sign-in-btn" class="btn btn-primary">Sign In</button>
+          <p class="auth-switch">Don't have an account? <a href="#" id="show-sign-up">Sign Up</a></p>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="sign-up-form" class="auth-form hidden">
+          <h2>Create Account</h2>
+          <input type="email" id="sign-up-email" placeholder="Email" required>
+          <input type="password" id="sign-up-password" placeholder="Password" required>
+          <input type="password" id="sign-up-confirm" placeholder="Confirm Password" required>
+          <button id="sign-up-btn" class="btn btn-primary">Create Account</button>
+          <p class="auth-switch">Already have an account? <a href="#" id="show-sign-in">Sign In</a></p>
+        </div>
+      </div>
+
+      <!-- User Info (shown when logged in) -->
+      <div id="user-info" class="hidden">
+        <span id="user-email"></span>
+        <button id="sign-out-btn" class="btn btn-secondary">Sign Out</button>
+      </div>
+    </section>
+
+    <!-- Upload Section (shown when logged in) -->
+    <section id="upload-section" class="section hidden">
+      <div class="upload-area" id="drop-zone">
+        <input type="file" id="file-input" accept=".pdf,image/*" multiple hidden>
+        <label for="file-input" class="upload-label">
+          <span class="upload-icon">+</span>
+          <span>Drop files or click to upload</span>
+          <span class="upload-hint">PDFs and images only</span>
+        </label>
+      </div>
+      <div id="upload-progress" class="progress-bar hidden">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+    </section>
+
+    <!-- Files List -->
+    <section id="files-section" class="section hidden">
+      <h2>Your Files</h2>
+      <div id="files-list"></div>
+    </section>
+
+    <!-- Error/Status Messages -->
+    <div id="message" class="message hidden"></div>
+  </div>
+
+  <!-- Firebase SDK (modular via importmap doesn't work in extension context, use compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
