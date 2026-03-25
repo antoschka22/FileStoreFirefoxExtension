@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -o firebase-app-compat.js \"https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js\")",
+      "Bash(curl -o firebase-auth-compat.js \"https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js\")",
+      "Bash(curl -o firebase-storage-compat.js \"https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js\")"
+    ]
+  }
+}
